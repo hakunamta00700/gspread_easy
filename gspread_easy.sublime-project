@@ -1,0 +1,45 @@
+{
+    "build_systems":
+    [
+        {
+            "cmd":
+            [
+                "ionic"
+            ],
+            "name": "Ionic build system",
+            "shell_cmd": "ionic serve"
+        }
+    ],
+    "folders":
+    [
+        {
+            "file_exclude_patterns":
+            [
+
+                "*.pyc",
+                "*.img",
+                "*.json",
+            ],
+            "file_include_patterns":
+            [
+                "*.py",
+                "*.html",
+                "*.js",
+                "css",
+                "*.sh",
+                "*.old",
+                "*.md",
+            ],
+            "folder_exclude_patterns":
+            [
+                "__pycache__",
+                "*.org",
+                "migrations.old",
+                "venv",
+
+            ],
+            "name": "python google spreadsheet",
+            "path": "."
+        }
+    ]
+}
