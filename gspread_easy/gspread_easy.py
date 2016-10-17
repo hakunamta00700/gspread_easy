@@ -58,7 +58,10 @@ class GSWorker:
 
     def get_row(self, row):
         '''row에 해당하는 데이타를 모두 불러옴
-        :param int to_col 몇번 째 컬럼 까지 불러올지
+        :param int to_col 몇번 째 컬럼 까지 불러올지2
         '''
         sheet = self.document.worksheet("Sheet1")
         return sheet.row_values(row)
+
+    def get_all_values(self):
+        return self.document.sheet1.get_all_values()
