@@ -65,3 +65,25 @@ class GSWorker:
 
     def get_all_values(self):
         return self.document.sheet1.get_all_values()
+
+    def insert_row(self, row_data_json):
+        row_data = json.loads(row_data_json)
+        print("-->", row_data)
+
+        try:
+            sheet = self.document.worksheet("Sheet1")
+            keyList = sheet.row_values(1)
+            print("keyList:", keyList)
+
+            # for key, value in row_data.items():
+            ordered_values = list()
+            for key in keyList:
+                if key in row_data:
+                    ordered_values.append(row_data[key])
+                else:
+                    ordered_values.append("")
+            sheet.append_row(ordered_values)
+            return True
+        except Exception as err:
+            print(err)
+            return False
