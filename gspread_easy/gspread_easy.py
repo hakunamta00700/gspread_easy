@@ -68,12 +68,12 @@ class GSWorker:
 
     def insert_row(self, row_data_json):
         row_data = json.loads(row_data_json)
-        print("-->", row_data)
+        # print("-->", row_data)
 
         try:
             sheet = self.document.worksheet("Sheet1")
             keyList = sheet.row_values(1)
-            print("keyList:", keyList)
+            # print("keyList:", keyList)
 
             # for key, value in row_data.items():
             ordered_values = list()
@@ -87,3 +87,19 @@ class GSWorker:
         except Exception as err:
             print(err)
             return False
+
+    def update_row(self, keyname, keyvalue, row_data_json):
+        print(keyname, keyvalue)
+        row_data = json.loads(row_data_json)
+        sheet = self.document.worksheet("Sheet1")
+        keyList = sheet.row_values(1)
+        print("-->keyList:", keyList)
+        col = keyList.index(keyname) + 1
+        colvalues = sheet.col_values(col)
+        row = colvalues.index(keyvalue) + 1
+
+        for key in keyList:
+            if key in row_data:
+                _col = keyList.index(key) + 1
+                sheet.update_cell(row, _col, row_data[key])
+        return True
